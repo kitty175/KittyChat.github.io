@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seu Bot - Página Principal</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://media.discordapp.net/attachments/934448656751398974/1165165880485888051/f0e8e4da25f10df35820a5efb16adb45.jpg?ex=6545dc49&is=65336749&hm=3d0b9cf66b1761d72e8849b0fe5282f7812e2db3d71c61d2e20329029bf11141&') center/cover no-repeat;
+            z-index: -1;
+        }
+        .container {
+            position: relative;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            border-radius: 15px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+        .rounded-button {
+            background-color: #fabece;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            margin-bottom: 10px;
+            transition: background-color 0.3s ease;
+        }
+        .rounded-button:hover {
+            background-color: #f092ab;
+        }
+        .section {
+            display: none;
+            overflow: hidden;
+        }
+        .visible {
+            display: block;
+        }
+        #aboutBot {
+            display: block;
+            margin-bottom: 20px;
+        }
+        #aboutCreator {
+            display: none;
+        }
+        #commands {
+            display: none;
+        }
+        #buttonsContainer {
+            display: flex;
+            flex-direction: column;
+        }
+        table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        #aboutBot img {
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            margin-bottom: 10px;
+        }
+        .commands-list {
+            text-align: left;
+        }
+        .close-button {
+            background-color: #fabece;
+            color: white;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            margin-bottom: 10px;
+            transition: background-color 0.3s ease;
+        }
+        .close-button:hover {
+            background-color: #f092ab;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="background"></div>
+
+    <div class="container" id="botContainer">
+
+        <!-- Seção "Sobre o Bot" -->
+        <div class="section visible" id="aboutBot">
+            <img src="https://media.discordapp.net/attachments/934448656751398974/1165151999248060486/183_Sem_Titulo_20231020221434.png?ex=6545cf5c&is=65335a5c&hm=68a15693697940dd129225451c5cbec28a746802624ac453814f668b7ce3ddfe&" alt="Avatar do Bot">
+            <h2>KittyChat !!</h2>
+            <!-- Coloque informações sobre o bot aqui -->
+            <p>MEOW!! descrição mt linda</p>
+        </div>
+
+        <div id="buttonsContainer">
+            <!-- Botões para mostrar outras seções -->
+            <button class="rounded-button" onclick="showSection('aboutBot')">Sobre o Bot</button>
+            <button class="rounded-button" onclick="showSection('aboutCreator')">Sobre a Criadora</button>
+            <button class="rounded-button" onclick="showSection('commands')">Comandos</button>
+        </div>
+
+      
+        <!-- Seção "Sobre a Criadora" -->
+        <div class="section" id="aboutCreator">
+            <h2>Sobre a Criadora</h2>
+            <!-- Coloque informações sobre a criadora aqui -->
+            <p>A criadora deste bot é...uma vagabunda</p>
+        </div>
+        <!-- Seção "Comandos" -->
+        <div class="section" id="commands">
+            <h2>Comandos</h2>
+            <!-- Botões para diferentes categorias -->
+            <button class="rounded-button" onclick="showCategory('fun')">Diversão</button>
+            <button class="rounded-button" onclick="showCategory('mod')">Moderação</button>
+            <button class="rounded-button" onclick="showCategory('eco')">Economia</button>
+            <button class="rounded-button" onclick="showCategory('util')">Utilidade</button>
+
+            <!-- Seção específica para cada categoria -->
+            <div class="section" id="funCommands">
+                <h3>Comandos de Diversão</h3>
+                <!-- Informações sobre comandos de diversão -->
+                <p>Comandos divertidos vão aqui...</p>
+            </div>
+
+            <div class="section" id="modCommands">
+                <h3>Comandos de Moderação</h3>
+                <!-- Informações sobre comandos de moderação -->
+                <p>Comandos de moderação vão aqui...</p>
+            </div>
+
+            <div class="section" id="ecoCommands">
+                <h3>Comandos de Economia</h3>
+                <!-- Informações sobre comandos de economia -->
+                <p>Comandos de economia vão aqui...</p>
+            </div>
+
+            <div class="section" id="utilCommands">
+                <h3>Comandos de Utilidade</h3>
+                <!-- Informações sobre comandos de utilidade -->
+                <p>Comandos úteis vão aqui...</p>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function showSection(sectionId) {
+            // Esconde todas as seções
+            document.querySelectorAll('.section').forEach(function(section) {
+                section.style.display = 'none';
+            });
+
+            // Exibe a seção específica
+            document.getElementById(sectionId).style.display = 'block';
+        }
+
+        function showCategory(category) {
+            // Esconde todas as seções de comandos
+            document.querySelectorAll('.section[id$="Commands"]').forEach(function(section) {
+                section.style.display = 'none';
+            });
+
+            // Exibe a seção específica da categoria
+            document.getElementById(category + 'Commands').style.display = 'block';
+        }
+    </script>
+
+</body>
+</html></html>
